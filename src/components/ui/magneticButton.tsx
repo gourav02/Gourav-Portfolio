@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 interface AnimatedButtonProps {
   children: React.ReactNode;
   href?: string;
+  type?: "submit" | "button" | "reset" | undefined 
   onClick?: () => void;
   className?: string;
   variant?: 'stroke' | 'filled' | 'primary';
@@ -17,6 +18,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
   children,
   href,
   onClick,
+  type,
   className,
   variant = 'stroke',
   size = 'md',
@@ -109,6 +111,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={buttonRef as any}
       href={href}
+      type={type}
       onClick={onClick}
       className={baseClasses}
       onMouseEnter={handleMouseEnter}

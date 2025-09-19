@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import { Badge } from "@/components/ui/badge"
-import { skills } from "@/data/resume"
+import { skills, textColor } from "@/data/resume"
 import { gsapClient, ScrollTrigger } from "@/lib/gsap"
 
 export function Skills() {
@@ -12,9 +12,11 @@ export function Skills() {
     const gsap = gsapClient()
     if (!root.current) return
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
     const ctx = gsap.context(() => {
       if (prefersReduced) return
-      // Split title words
+
+      // === Scroll animations (your existing code) ===
       const title = root.current!.querySelector(".section-title") as HTMLElement | null
       if (title && !title.querySelector(".word")) {
         const text = title.textContent?.trim() || ""
@@ -59,19 +61,54 @@ export function Skills() {
           start: "top 75%",
         } as ScrollTrigger.Vars,
       })
+
+      // === Hover animation for badges ===
+      document.querySelectorAll<HTMLElement>(".skills-group").forEach((group) => {
+        const color = group.dataset.color || "#000"
+        const badges = group.querySelectorAll<HTMLElement>(".skills-badge")
+
+        badges.forEach((badge) => {
+          badge.addEventListener("mouseenter", () => {
+            gsap.to(badge, {
+              color: color,
+              duration: 0.3,
+              ease: "power2.out",
+            })
+          })
+          badge.addEventListener("mouseleave", () => {
+            gsap.to(badge, {
+              color: "",
+              duration: 0.3,
+              ease: "power2.out",
+            })
+          })
+        })
+      })
     }, root)
+
     return () => ctx.revert()
   }, [])
 
   return (
-    <section ref={root} id="skills" className="theme-skills container mx-auto w-full scroll-mt-24 px-4 sm:px-0">
-      <h2 className="section-title text-2xl font-semibold tracking-tight">Skills</h2>
+    <section
+      ref={root}
+      id="skills"
+      className="theme-skills container mx-auto w-full scroll-mt-24 px-4 sm:px-0"
+    >
+      <h2 className="text-6xl font-bold tracking-tight flex justify-center">Skills</h2>
       <div className="mt-6 grid gap-6 sm:grid-cols-2">
-        {Object.entries(skills).map(([group, items]) => (
-          <div key={group} className="skills-group">
-            <h3 className="text-sm font-medium capitalize text-muted-foreground">
+        {Object.entries(skills).map(([group, items], index) => (
+          <div
+            key={group}
+            className="skills-group"
+            data-color={textColor[index]}
+          >
+            <h2
+              className="text-lg font-bold capitalize"
+              style={{ color: textColor[index] }}
+            >
               {group}
-            </h3>
+            </h2>
             <div className="mt-3 flex flex-wrap gap-2">
               {items.map((item) => (
                 <Badge key={item} className="skills-badge" variant="secondary">
