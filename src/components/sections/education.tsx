@@ -55,7 +55,7 @@ export function Education() {
 
   return (
     <section ref={root} id="education" className="theme-education container mx-auto w-full scroll-mt-24 px-4 sm:px-0">
-      <h2 className="section-title text-2xl font-semibold tracking-tight">Education</h2>
+      <h2 className="text-6xl font-bold tracking-tight flex justify-center">Education</h2>
       <div className="mt-6 grid gap-6">
         {education.map((e) => (
           <Tilt key={e.school} className="edu-card">

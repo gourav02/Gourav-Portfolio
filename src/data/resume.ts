@@ -6,6 +6,8 @@ export const links = {
   github: "https://github.com/gourav",
 }
 
+export const textColor = ['#0ae448', '#fec5fb', '#ff8709', '#00bae2', '#abff84', '#9d95ff']
+
 export const summaryData = ["Software Engineer with 3+ years of experience across architecture, design, and implementation.",
                         "Strong expertise in React, TypeScript, Next.js, and modern tooling. Proven track record building scalable apps serving 1M+ records across 10,000+ locations.",
                         "Experienced in Agile, code reviews, mentoring, responsive UI, unit/E2E testing, CI/CD, and performance optimization."]
