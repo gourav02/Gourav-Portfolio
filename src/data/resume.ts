@@ -85,16 +85,16 @@ export const projects = [
     },
   },
   {
-    name: "TinDog - Tinder for dog",
-    stack: ["Html", "Css", "Javascript"],
+    name: "ACDA - Asansol Coalfield Diabetes association",
+    stack: ["Next.js", "Tailwind", "Typescript", "MongoDB", "cloudinary", "Resend"],
     highlights: [
-      "",
+      "Webapp for a diabetes association, with Interactive & responsive UI powered by Next.Js, mongoDB.",
       "Typed component architecture + Tailwind for scalable styling.",
     ],
-    image: "/assets/images/tindog.png",
+    image: "/assets/images/acda.png",
     links: {
-      demo: "https://gourav02.github.io/myTindog/",
-      github: "https://github.com/gourav02/myTindog",
+      demo: "https://www.acda.org.in/",
+      github: "https://github.com/gourav02/acda_org",
     },
   },
   {

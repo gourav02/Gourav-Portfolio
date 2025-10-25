@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { Twitter, Github, Mail, Phone, Instagram } from "lucide-react";
-import { Linkedin } from 'lucide-react';
+import { Linkedin } from "lucide-react";
 
 export default function Social() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -20,9 +20,8 @@ export default function Social() {
       delay: 1,
       // repeat: -1,
       stagger: 0.3, // stagger in from the left with a 0.1 second gap in between animations
-      ease: "sine.out"
+      ease: "sine.out",
     });
-    
 
     icons.forEach((icon) => {
       // Scale up & fade in on mount
@@ -39,29 +38,92 @@ export default function Social() {
 
       // Hover animation
       icon.addEventListener("mouseenter", () => {
-        gsap.to(icon, 
-          { scale: 1.2, rotate: 0, duration: 0.3, ease: "power2.out" });
+        gsap.to(icon, {
+          scale: 1.2,
+          rotate: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        });
       });
 
       icon.addEventListener("mouseleave", () => {
-        gsap.to(icon, { scale: 1, rotate: 360, duration: 0.3, ease: "power2.inOut" });
+        gsap.to(icon, {
+          scale: 1,
+          rotate: 360,
+          duration: 0.3,
+          ease: "power2.inOut",
+        });
       });
     });
   }, []);
 
   return (
     <section className="relative container mx-auto w-full px-10 mt-30">
-    <div
-      ref={containerRef}
-      className="flex gap-6 justify-between items-center"
-    >
-     <Twitter size={50} className={"social-icon box opacity: 0" }/>
-     <Github size={50} className="social-icon box opacity: 0" />
-     <Linkedin size={50} className="social-icon box opacity: 0" />
-     <Mail size={50} className="social-icon box opacity: 0" />
-     <Phone size={50} className="social-icon box opacity: 0" />
-     <Instagram size={50} className="social-icon box opacity: 0" />
-    </div>
+      <div
+        ref={containerRef}
+        className="flex gap-6 justify-between items-center"
+      >
+        <a
+          href="https://twitter.com/yourusername"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="social-icon box hover:text-primary-400 transition-colors"
+          aria-label="Twitter Profile"
+        >
+          <Twitter size={50} />
+        </a>
+
+        {/* GitHub */}
+        <a
+          href="https://github.com/gourav02"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="social-icon box hover:text-primary-400 transition-colors"
+          aria-label="GitHub Profile"
+        >
+          <Github size={50} />
+        </a>
+
+        {/* LinkedIn */}
+        <a
+          href="https://www.linkedin.com/in/gourav-mukherjeee-8654891b0/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="social-icon box hover:text-primary-400 transition-colors"
+          aria-label="LinkedIn Profile"
+        >
+          <Linkedin size={50} />
+        </a>
+
+        {/* Email */}
+        <a
+          href="mailto:gouravsuvo@gmail.com"
+          className="social-icon box hover:text-primary-400 transition-colors"
+          aria-label="Send Email"
+        >
+          <Mail size={50} />
+        </a>
+
+        {/* Phone */}
+        <a
+          href="tel:+916295534646"
+          className="social-icon box hover:text-primary-400 transition-colors"
+          aria-label="Call Phone Number"
+        >
+          <Phone size={50} />
+        </a>
+
+        {/* Instagram */}
+        <a
+          href="/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="social-icon box hover:text-primary-400 transition-colors"
+          aria-label="Instagram Profile"
+        >
+          <Instagram size={50} />
+        </a>
+      </div>
     </section>
-    );
+  );
 }
